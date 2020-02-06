@@ -8,4 +8,6 @@ public interface MutantServices {
     public boolean isMutant(JSONObject body) throws JSONException;
 
     public String stats();
+
+    public void byeStat();
 }

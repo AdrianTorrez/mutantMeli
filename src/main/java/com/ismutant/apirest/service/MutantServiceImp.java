@@ -57,5 +57,10 @@ public class MutantServiceImp implements MutantServices {
         return response.toString();
     }
 
+    @Override
+    public void byeStat() {
+        statRepository.deleteAll();
+    }
+
 
 }

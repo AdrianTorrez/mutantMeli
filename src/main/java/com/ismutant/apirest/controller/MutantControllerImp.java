@@ -36,13 +36,22 @@ public class MutantControllerImp{
     }
 
 
-    // https://meli-267103.appspot.com//status
+    // https://meli-267103.appspot.com/status
     // -> Se retorna un JSON con: count_mutant_dna = total ADN humanos evaluados, count_human_dna = total de ADN mutantes evaluados, ratio = ratio entre las dos evaluaciones
     @GetMapping("/stats")
     public ResponseEntity<?> status(){
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity(mutantServices.stats(),headers, HttpStatus.OK);
 
+    }
+
+    // https://meli-267103.appspot.com/bye
+    // -> Metodo para limpiar la base de datos - Delete All
+    @GetMapping("/bye")
+        public ResponseEntity<?> byeStats(){
+        headers.setContentType(MediaType.TEXT_PLAIN);
+        mutantServices.byeStat();
+        return new ResponseEntity("Base de Datos eliminada.",headers, HttpStatus.OK);
     }
 
 
