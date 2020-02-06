@@ -42,9 +42,18 @@ public class MutantServiceImp implements MutantServices {
         JSONObject response = new JSONObject();
         response.put("count_mutant_dna", statRepository.findMutantCount());
         response.put("count_human_dna", statRepository.findHmanCount());
-        float ratio = (float)statRepository.findMutantCount() /(float) statRepository.findHmanCount();
-        DecimalFormat formatTwoDecimal = new DecimalFormat("#.##");
-        response.put("ratio",formatTwoDecimal.format(ratio));
+        if(statRepository.findHmanCount()!=0) {
+            float ratio = (float) statRepository.findMutantCount() / (float) statRepository.findHmanCount();
+            DecimalFormat formatTwoDecimal = new DecimalFormat("#.##");
+            formatTwoDecimal.format(ratio);
+            response.put("ratio", ratio);
+        }
+        else{
+            String humanCero = "Santo Cielo! No ha venido ningún humano.";
+            response.put("ratio",humanCero);
+        }
+
+
         return response.toString();
     }
 
