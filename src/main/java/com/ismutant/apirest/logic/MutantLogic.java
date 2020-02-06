@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
+
 @Component("MutantLogic")
 public class MutantLogic {
 
@@ -156,4 +157,10 @@ public class MutantLogic {
 
         return count;
     }
+
+    public int getCountDna() {
+        return countDna;
+    }
+
+
 }
